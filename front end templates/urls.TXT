@@ -1,0 +1,55 @@
+from django.urls import path
+from . import views
+from .views import create_payment_intent, confirm_payment
+
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('category/', views.category_view, name='category'),
+    path('header/', views.header_view, name='header'),
+    path('footer/', views.footer, name='footer'),
+    path('food/',views.food_view,name='food'),
+    path('makeup/', views.makeup_page, name='makeup_page'),
+    path('perfumes/', views.perfumes, name='perfumes'),
+    path('shoes/',views.shoes, name='shoes'),
+    path('cleaning/',views.cleaning, name='cleaning'),
+    path('clothing/',views.clothing, name='clothing'),
+    path('games/',views.games, name='games'),
+    path('furnitures/',views.furnitures, name='furnitures'),
+    path('Beverage/',views.Beverage, name='Beverage'),
+    path('seafoodplatter/', views.seafood_platter_view, name='seafood_platter'),
+    path('salmon/', views.Salmon, name='Salmon'),
+    path('chicken/',views.Chicken,name='Chicken'),
+    path('sushi/',views.Sushi,name='Sushi'),
+    path('steak/',views.Steak,name='Steak'),
+    path('shawarma/',views.Shawarma,name='Shawarma'),
+    path('sandwich/',views.Sandwich,name='Sandwich'),
+    path('burger/',views.Burger,name='Burger'),
+    path('croissant/',views.Croissant,name='Croissant'),
+    path('jarcake/',views.JarCake,name='JarCake'),
+    path('coupon1/',views.Coupon1,name='Coupon1'),
+    path('coupon2/',views.Coupon2,name='Coupon2'),
+    path('coupon3/',views.Coupon3,name='Coupon3'),
+    path('deals/',views.Deals,name='Deals'),
+    path('about-us/',views.AboutUs,name='AboutUs'),
+    path('contact/',views.Contact,name='Contact'),
+    path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/', views.view_cart, name='view_cart'),
+    path('remove-from-cart/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
+    path('add-to-wishlist/<int:product_id>/', views.add_to_wishlist, name='add_to_wishlist'),
+    path('wishlist/', views.view_wishlist, name='wishlist'),
+    path('remove-from-wishlist/<int:product_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),
+    path('confirm-payment/', confirm_payment, name='confirm_payment'),
+    path('process_checkout/', views.process_checkout, name='process_checkout'),
+    
+
+    path('checkout/', views.checkout, name='checkout'),
+    path('process_checkout/', views.process_checkout, name='process_checkout'),
+    path('payment/', views.payment_page, name='payment_page'),  # Updated URL pattern
+    path('finishing/', views.finishing, name='finishing'),
+    path('payment_failed/', views.payment_failed, name='payment_failed'),
+    path('process_payment/', views.process_payment, name='process_payment'),  # Add this line
+
+
+    path('product/<int:product_id>/', views.product_detail, name='product_detail'),
+]

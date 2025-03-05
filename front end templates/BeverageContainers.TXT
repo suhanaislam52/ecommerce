@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup - Swift Cart</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .zoom-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .zoom-card:hover {
+            transform: scale(1.05); /* Slight zoom-in effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+        }
+
+        .card-img-top {
+            width: 100%; /* Ensures image takes full width of the card */
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures image covers the card area while maintaining aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    {% include 'core/header.html' %}
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Beverage Containers/3.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Netany Drinking Glass Set with Glass Straw (4 Pieces)</h5>
+                        <p class="card-text">Elevate your sipping experience with the Netany Drinking Glass Set. This 4-piece set includes stylish glasses and matching glass straws, combining elegance ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Beverage Containers/6.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">6-Piece Glass Set with Bamboo Lids</h5>
+                        <p class="card-text">Discover the perfect blend of modern style and natural charm with our 6-Piece Glass Set. Each glass comes with a bamboo lid, keeping your beverages ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Beverage Containers/7.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Decemera Glass with Bamboo Lids</h5>
+                        <p class="card-text">Enjoy beverages in style with the Decemera Glass featuring a sleek bamboo lid. Designed to keep your drinks fresh and flavorful, this glass combines ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Beverage Containers/8.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Luxu Drinking Glasses Set (13 Pieces)</h5>
+                        <p class="card-text">Indulge in sophistication with the Luxu Drinking Glasses Set. This 13-piece collection is crafted for those who appreciate quality and style. Whether serving cocktails ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9734;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Beverage Containers/9.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Enhance Glass Water Bottles</h5>
+                        <p class="card-text">Stay hydrated in style with the Enhance Glass Water Bottles. Designed for durability and elegance, these bottles make drinking water a pleasure. ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Beverage Containers/10.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">8 oz Juice Mini Bootles</h5>
+                        <p class="card-text"> Perfect for portion control or packing in lunchboxes, our 8 oz Juice Bottles Mini are both functional and charming. These compact bottles are ideal for fresh juices, smoothies....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Beverage Containers/11.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Glaver Moon’s Drinking Jars</h5>
+                        <p class="card-text"> Add a touch of whimsy to your beverage routine with Glaver Moon’s Drinking Jars. Featuring a unique design, these jars are perfect for serving up your favorite drinks....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+       
+            
+            <!-- Repeat similar blocks for other cards -->
+        </div>
+    </div>
+    <!-- Include Footer -->
+    {% include 'core/footer.html' %}
+
+    <!-- jQuery (Full Version) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

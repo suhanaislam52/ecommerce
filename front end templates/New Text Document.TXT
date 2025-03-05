@@ -1,0 +1,284 @@
+from django.shortcuts import render, redirect, get_object_or_404,HttpResponse
+from django.contrib.auth.decorators import login_required
+from .models import Product, Cart, CartItem, Wishlist, WishlistItem
+import stripe
+from django.conf import settings
+from django.http import JsonResponse
+from .models import Order
+from django.views.decorators.csrf import csrf_exempt
+from .utils import calculate_total_price
+from .forms import CheckoutForm
+from django.core.exceptions import ObjectDoesNotExist
+from decimal import Decimal
+
+
+
+
+
+def index(request):
+    return render(request, 'core/HomePage.html')
+
+def category_view(request):
+    return render(request, 'core/Category.html')
+
+def header_view(request):
+    return render(request, 'core/header.html')
+
+def footer(request):
+    return render(request, 'core/footer.html')
+
+def food_view(request):
+    products = Product.objects.all()  # Fetch all products
+    return render(request, 'core/food.html', {'products': products})
+
+def makeup_page(request):
+    return render(request, 'core/makeup.html')
+
+def perfumes(request):
+    return render(request, 'core/Perfumes.html')
+
+def shoes(request):
+    return render(request,'core/Shoes.html')
+
+def cleaning(request):
+    return render(request,'core/Cleaning.html')
+
+def clothing(request):
+    return render(request,'core/Clothing.html')
+
+def games(request):
+    return render(request,'core/Games.html')
+
+def furnitures(request):
+    return render(request,'core/Furnitures.html')
+
+def Beverage(request):
+    return render(request,'core/BeverageContainers.html')
+
+def seafood_platter_view(request):
+    product = get_object_or_404(Product, name="Seafood Platter")
+    return render(request, 'core/SeaFoodPlatter.html', {'product': product})
+
+def Salmon(request):
+    # Fetch the product by name
+    product = get_object_or_404(Product, name="Salmon with Shrimp")
+    return render(request, 'core/Salmon.html', {'product': product})
+
+
+def Chicken(request):
+    product = get_object_or_404(Product, name="Smoked Grilled Chicken")
+    return render(request,'core/Chicken.html',{'product': product})
+
+def Sushi(request):
+    product = get_object_or_404(Product, name="Salmon Sushi Roll")
+    return render(request,'core/Sushi.html',{'product': product})
+
+def Steak(request):
+    product = get_object_or_404(Product, name="Beef Steak with Mashed Potato")
+    return render(request,'core/BeefSteak.html',{'product': product})
+
+def Shawarma(request):
+    product = get_object_or_404(Product, name="Shawarma Roll")
+    return render(request,'core/Shawarma.html',{'product': product})
+
+def Sandwich(request):
+    product = get_object_or_404(Product, name="Sub Sandwich")
+    return render(request,'core/Sandwich.html',{'product': product})
+
+def Burger(request):
+    product = get_object_or_404(Product, name="Double Chicken Patty Burger")
+    return render(request,'core/Burger.html',{'product': product})
+
+def Croissant(request):
+    product = get_object_or_404(Product, name="Croissant")
+    return render(request,'core/Croissant.html',{'product': product})
+
+def JarCake(request):
+    product = get_object_or_404(Product, name="Rainbow Jar Cake")
+    return render(request,'core/JarCake.html',{'product': product})
+
+def Coupon1(request):
+    return render(request,'core/Coupon1.html')
+
+def Coupon2(request):
+    return render(request,'core/Coupon2.html')
+
+def Coupon3(request):
+    return render(request,'core/Coupon3.html')
+
+def Deals(request):
+    return render(request,'core/Deals.html')
+
+def AboutUs(request):
+    return render(request,'core/AboutUs.html')
+
+def Contact(request):
+    return render(request,'core/Contact.html')
+
+
+@login_required
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)
+
+    # Check if the product is already in the cart
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 1))
+        if not created:  # If the item was not newly created, update the quantity
+            cart_item.quantity = quantity  # Update quantity with the new value
+        else:
+            cart_item.quantity += quantity  # Add to the existing quantity
+        cart_item.save()
+
+    return redirect('view_cart')
+@login_required
+def view_cart(request):
+    cart = get_object_or_404(Cart, user=request.user)
+    cart_items = CartItem.objects.filter(cart=cart)
+    total = sum(item.product.price * item.quantity for item in cart_items)
+
+    return render(request, 'core/cart.html', {'cart_items': cart_items, 'total': total})
+
+def checkout_placeholder(request):
+    return render(request, 'core/checkout_placeholder.html')
+
+@login_required
+def remove_from_cart(request, item_id):
+    cart = get_object_or_404(Cart, user=request.user)
+    cart_item = get_object_or_404(CartItem, id=item_id, cart=cart)
+    cart_item.delete()
+    return redirect('view_cart')
+
+@login_required
+def add_to_wishlist(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    WishlistItem.objects.get_or_create(wishlist=wishlist, product=product)
+    return redirect('wishlist')
+
+@login_required
+def view_wishlist(request):
+    wishlist = get_object_or_404(Wishlist, user=request.user)
+    wishlist_items = WishlistItem.objects.filter(wishlist=wishlist)
+    return render(request, 'core/wishlist.html', {'wishlist_items': wishlist_items})
+
+@login_required
+def remove_from_wishlist(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    wishlist = get_object_or_404(Wishlist, user=request.user)
+    WishlistItem.objects.filter(wishlist=wishlist, product=product).delete()
+    return redirect('wishlist')
+
+@login_required
+def create_payment_intent(request):
+    total_price = request.GET.get('total_price', 0)  # Default to 0 if not provided
+    return render(request, 'core/payment.html', {
+        'total_price': total_price
+    })
+
+
+
+def confirm_payment(request):
+    if request.method == 'POST':
+        payment_intent_id = request.POST.get('payment_intent_id')
+        try:
+            intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+            if intent.status == 'succeeded':
+                # Handle successful payment here
+                Order.objects.create(user=request.user, amount=100.00)
+                return redirect('success_page')  # Redirect to success page
+            else:
+                # Handle failed payment here
+                return redirect('failure_page')  # Redirect to failure page
+        except stripe.error.StripeError:
+            return redirect('failure_page')  # Redirect to failure page
+        
+
+
+@login_required
+def process_checkout(request):
+    if request.method == 'POST':
+        shipping_address = request.POST.get('shipping_address')
+        phone_number = request.POST.get('phone_number')
+        coupon_code = request.POST.get('coupon')
+
+        cart = get_object_or_404(Cart, user=request.user)
+        cart_items = CartItem.objects.filter(cart=cart)
+        original_amount = sum(item.product.price * item.quantity for item in cart_items)
+
+        # Apply coupon logic
+        discount = Decimal('0')
+        coupon_cost = Decimal('0')
+
+        if coupon_code == 'coupon1':
+            discount = Decimal('0.10')  # 10% discount
+            coupon_cost = Decimal('10.00')
+        elif coupon_code == 'coupon2':
+            discount = Decimal('0.20')  # 20% discount
+            coupon_cost = Decimal('15.00')
+        elif coupon_code == 'coupon3':
+            discount = Decimal('0.15')  # 15% discount
+            coupon_cost = Decimal('7.00')
+
+        final_amount = original_amount - (original_amount * discount) + coupon_cost
+
+        # Format the final_amount as a string
+        final_amount_str = f"{final_amount:.2f}"
+
+        return redirect(f'/payment/?total_price={final_amount_str}')
+
+    return redirect('checkout')
+
+def payment_page(request):
+    total_price = request.GET.get('total_price', '0.00')
+    return render(request, 'core/payment.html', {'total_price': total_price})
+
+# Fake payment gateway response
+FAKE_PAYMENT_GATEWAY_SUCCESS_CARD_NUMBER = '4111111111111111'
+
+
+
+
+def calculate_total_price(user, coupon_code):
+    # Dummy implementation for calculating the total price
+    # Replace with actual calculation logic
+    return 1030.00  # Example total price
+def checkout(request):
+    # Get the current user's cart items
+    if request.user.is_authenticated:
+        cart_items = CartItem.objects.filter(cart__user=request.user)
+    else:
+        cart_items = CartItem.objects.none()
+    
+    # Additional logic and rendering
+    return render(request, 'core/checkout_placeholder.html', {'cart_items': cart_items})
+
+
+
+
+def finishing(request):
+    return render(request, 'core/finishing.html')
+
+def payment_failed(request):
+    return render(request, 'core/payment_failed.html')
+
+def process_payment(request):
+    if request.method == 'POST':
+        # Simulate processing the payment
+        # For example, validate the payment method and redirect accordingly
+        fake_card_number = '4242424242424242'
+        user_card_number = request.POST.get('card_number')
+
+        if user_card_number == fake_card_number:
+            return redirect('finishing')
+        else:
+            return redirect('payment_failed')
+
+    return HttpResponse("Invalid request method", status=405)
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'core/product_detail.html', {'product': product})
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup - Swift Cart</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .zoom-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .zoom-card:hover {
+            transform: scale(1.05); /* Slight zoom-in effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+        }
+
+        .card-img-top {
+            width: 100%; /* Ensures image takes full width of the card */
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures image covers the card area while maintaining aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    {% include 'core/header.html' %}
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Cleaning Accessories/3.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Classic Black Heels</h5>
+                        <p class="card-text">The Philips PowerGo vacuum cleaner delivers high suction power of cleaning performance with a multi-purpose nozzle for any type of floor....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Cleaning Accessories/4.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Cleaning Brooms</h5>
+                        <p class="card-text">Keep your floors spotless with our Efficient Floor Cleaning Brooms. Designed for quick and thorough cleaning, these brooms feature ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Cleaning Accessories/5.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Glass Cleaner</h5>
+                        <p class="card-text">Experience the ultimate in versatility with our Multi-Surface Glass Cleaner Soap. Designed to tackle grime, grease, and fingerprints, this powerful formula ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Cleaning Accessories/6.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Glass Wiper</h5>
+                        <p class="card-text">Achieve sparkling, crystal-clear surfaces with our Streak-Free Glass Cleaner. This powerful formula effortlessly removes smudges, fingerprints and dirt from glass ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Cleaning Accessories/9.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Cleaning Gloves</h5>
+                        <p class="card-text">Protect your hands while tackling household chores with our Durable Multi-Purpose Cleaning Gloves. Made from high-quality ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Cleaning Accessories/12.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">DishSoap</h5>
+                        <p class="card-text"> Experience sparkling clean dishes with our Ultra-Clean Dishwashing Soap. This powerful formula effortlessly cuts through grease, grime, and stubborn ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9734;&#9734;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Include Footer -->
+    {% include 'core/footer.html' %}
+
+    <!-- jQuery (Full Version) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

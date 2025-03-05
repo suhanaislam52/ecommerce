@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deals - Swift Cart</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Custom CSS for the deals page */
+        .deal-box {
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 100%; /* Adjusted width to fit within the carousel */
+            margin: auto; /* Centering the box */
+        }
+        .deal-header {
+            font-size: 24px; /* Increase the font size as needed */
+            font-weight: bold; /* Make the text bold */
+            margin-bottom: 10px; /* Optional: add space below the header */
+        }
+        .deal-subheader {
+            font-size: 18px; /* Adjust the size as needed */
+            font-style: italic; /* Italicize the text */
+            margin-bottom: 15px; /* Space below the subheader */
+        }
+        .deal-box img {
+            width: 100%; /* Make the image take up the full width of the box */
+            height: auto; /* Maintain the aspect ratio of the image */
+            object-fit: cover; /* Ensures the image covers the box without stretching */
+            border-radius: 10px; /* Optional: match the border-radius of the box */
+        }
+        .deal-details {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .deal-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745; /* Green color for price */
+        }
+        .add-to-cart-btn {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        /* Different background colors for each deal box */
+        .daily-deals {
+            background-color: #ffebcc; /* Peach */
+        }
+        .seasonal-deals {
+            background-color: #d4edda; /* Pale green */
+        }
+        .bundle-deals {
+            background-color: #cce5ff; /* Light blue */
+        }
+        .limited-time-offers {
+            background-color: #f8d7da; /* Light red */
+        }
+        .new-arrival-promotions {
+            background-color: #fff3cd; /* Light yellow */
+        }
+        .holiday-specials {
+            background-color: #f1ee9c; /* Light grey */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    {% include 'core/header.html' %}
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div id="dealsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Daily Deals -->
+                <div class="carousel-item active">
+                    <div class="deal-box daily-deals">
+                        <div class="deal-header">Daily Deals</div>
+                        <div class="deal-subheader">Fresh and exciting daily offers just for you!</div>
+                        <img src="{% static 'images/food/7.png' %}" alt="Daily Deal">
+                        <div class="deal-details">
+                            <h5>Salmon Sushi Roll</h5>
+                            <p>Experience the delicate flavors of our Salmon Sushi Roll, featuring fresh, tender slices of premium salmon wrapped in seasoned sushi rice and crisp nori. Each bite offers a perfect balance of smooth, buttery salmon and the subtle tang of rice vinegar, enhanced with a touch of wasabi and soy sauce. This sushi roll is a delectable blend of simplicity and elegance.</p>
+                            <p class="deal-price">$135</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seasonal Deals -->
+                <div class="carousel-item">
+                    <div class="deal-box seasonal-deals">
+                        <div class="deal-header">Seasonal Deals</div>
+                        <div class="deal-subheader">Seasonal favorites to brighten your day!</div>
+                        <img src="{% static 'images/Clothing/2.png' %}" alt="Seasonal Deal">
+                        <div class="deal-details">
+                            <h5>Yellow Summer Dress</h5>
+                            <p>Embrace the warmth of the season with our Sunshine Breeze Yellow Flowey Summer Dress. This light and airy dress is designed to keep you cool and comfortable while exuding effortless style. The vibrant yellow hue radiates positivity and energy, perfect for sunny days and casual outings. Its flowey silhouette gently drapes over your body, offering a flattering fit for all shapes. With delicate floral patterns and soft fabric, this dress is both feminine and versatile, making it a go-to piece for picnics, beach strolls, or any summer adventure.</p>
+                            <p class="deal-price">$49.99</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Limited Time Offers -->
+                <div class="carousel-item">
+                    <div class="deal-box limited-time-offers">
+                        <div class="deal-header">Limited Time Offers</div>
+                        <div class="deal-subheader">Hurry, these offers won’t last long!</div>
+                        <img src="{% static 'images/Perfumes/2.png' %}" alt="Limited Time Offer">
+                        <div class="deal-details">
+                            <h5>Lux Perfume Hamper</h5>
+                            <p>For a limited time, receive a complimentary Lux Soap with your purchase of Lux Perfume. This soap, infused with the same exquisite fragrance, ensures that your scent is consistently enchanting from the moment you step out of the shower to your final touch of perfume. Indulge in this elegant trio and embrace a fragrance that speaks of luxury and refinement.</p>
+                            <p class="deal-price">$89.99</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bundle Deals -->
+                <div class="carousel-item">
+                    <div class="deal-box bundle-deals">
+                        <div class="deal-header">Bundle Deals</div>
+                        <div class="deal-subheader">The best bundles for your needs!</div>
+                        <img src="{% static 'images/Games/7.png' %}" alt="Bundle Deal">
+                        <div class="deal-details">
+                            <h5>Gaming Package</h5>
+                            <p>This set typically includes a high-performance gaming keyboard, a responsive gaming mouse, a comfortable headset with crystal-clear audio, and a durable mouse pad, all designed for precision and comfort. Whether you're a casual player or a competitive gamer, a gaming set provides the tools you need for seamless control, immersive sound, and enhanced performance, making it the perfect setup for taking your gaming to the next level.</p>
+                            <p class="deal-price">$39.99</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Arrival Promotions -->
+                <div class="carousel-item">
+                    <div class="deal-box new-arrival-promotions">
+                        <div class="deal-header">New Arrival Promotions</div>
+                        <div class="deal-subheader">Discover the latest and greatest products!</div>
+                        <img src="{% static 'images/Cleaning Accessories/22.png' %}" alt="New Arrival">
+                        <div class="deal-details">
+                            <h5>Philips PowerGo Vacuum Cleaner</h5>
+                            <p>The Philips PowerGo vacuum cleaner delivers high suction power of cleaning performance with a multi-purpose nozzle for any type of floor. Keep the air in your home clean and healthy, too, thanks to our Super Clean Air filter.</p>
+                            <p class="deal-price">$160.00</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holiday Specials -->
+                <div class="carousel-item">
+                    <div class="deal-box holiday-specials">
+                        <div class="deal-header">Holiday Specials</div>
+                        <div class="deal-subheader">Celebrate with our special holiday offers!</div>
+                        <img src="{% static 'images/food/20.png' %}" alt="Holiday Special">
+                        <div class="deal-details">
+                            <h5>Special Christmas Cake</h5>
+                            <p>Indulge in the festive spirit with our delectable Special Christmas Cake, a perfect blend of rich flavors and holiday cheer. This cake features a moist, spiced sponge layered with velvety frosting and adorned with seasonal decorations. Every slice offers a delightful combination of sweetness and spice, making it an ideal centerpiece for your holiday celebrations.</p>
+                            <p class="deal-price">$45.00</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <a class="carousel-control-prev" href="#dealsCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#dealsCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    {% include 'core/footer.html' %}
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

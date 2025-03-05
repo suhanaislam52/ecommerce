@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Cart</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Custom styles */
+        .spacer {
+            margin-top: 50px; /* Adjust this value to create the desired space */
+        }
+        .footer-social-icons a {
+            display: block;
+            margin-bottom: 5px; /* Add space between icons */
+        }
+        .card {
+           position: relative;
+           overflow: hidden; /* Ensure the content inside the card does not overflow */
+           border: 1px solid #ddd; /* Light border for the card */
+           border-radius: 0.25rem; /* Rounded corners */
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+           transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+        }
+
+        .card-img-top {
+           width: 100%; /* Make the image cover the card width */
+           height: 200px; /* Set a fixed height for uniform card images */
+           object-fit: cover; /* Cover the area of the image without distortion */
+           transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+        }
+
+        .card:hover .card-img-top {
+          transform: scale(1.05); /* Slightly zoom in on hover */
+        }
+
+        .card-body {
+          background-color: white;
+          transition: background-color 0.3s ease;
+        }
+
+        .btn-view {
+            background-color: #28a745; /* Green color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Slightly zoom in on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect on hover */
+        }
+
+        .card:hover .card-body {
+            background-color: rgba(181, 255, 51, 0.2); /* Light green overlay on hover */
+        }
+        .btn-view {
+        background-color: #28a745 !important; /* Green color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+    }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    {% include 'core/header.html' %}
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/food/4.png' %}" class="card-img-top" alt="Food">
+                    <div class="card-body">
+                        <h5 class="card-title">Food</h5>
+                        <a href="{% url 'food' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Makeup/12.png' %}" class="card-img-top" alt="Makeup">
+                    <div class="card-body">
+                        <h5 class="card-title">Makeup</h5>
+                        <a href="{% url 'makeup_page' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Perfumes/4.png' %}" class="card-img-top" alt="Perfumes">
+                    <div class="card-body">
+                        <h5 class="card-title">Perfumes</h5>
+                        <a href="{% url 'perfumes' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Shoes/4.png' %}" class="card-img-top" alt="Shoes">
+                    <div class="card-body">
+                        <h5 class="card-title">Shoes</h5>
+                        <a href="{% url 'shoes' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Cleaning Accessories/2.png' %}" class="card-img-top" alt="Cleaning Accessories">
+                    <div class="card-body">
+                        <h5 class="card-title">Cleaning Accessories</h5>
+                        <a href="{% url 'cleaning' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Clothing/1.png' %}" class="card-img-top" alt="Clothing">
+                    <div class="card-body">
+                        <h5 class="card-title">Clothing</h5>
+                        <a href="{% url 'clothing' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Games/3.png' %}" class="card-img-top" alt="Games">
+                    <div class="card-body">
+                        <h5 class="card-title">Games</h5>
+                        <a href="{% url 'games' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Furnitures/2.png' %}" class="card-img-top" alt="Furnitures">
+                    <div class="card-body">
+                        <h5 class="card-title">Furnitures</h5>
+                        <a href="{% url 'furnitures' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="col-md-4 mb-4">
+                <div class="card hover-card">
+                    <img src="{% static 'images/Beverage Containers/2.png' %}" class="card-img-top" alt="Beverage Containers">
+                    <div class="card-body">
+                        <h5 class="card-title">Beverage Containers</h5>
+                        <a href="{% url 'Beverage' %}" class="btn btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Space before Footer -->
+    <div class="spacer mt-5"></div>
+
+    <!-- Include Footer -->
+    {% include 'core/footer.html' %}
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

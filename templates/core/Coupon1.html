@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ coupon.code }} - Swift Cart</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+    /* Custom CSS for the coupon box */
+    .coupon-box {
+       background-color: #ffebcc; /* Peach color */
+       border-radius: 15px; /* Rounded corners */
+       padding: 20px;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+       max-width: 600px;
+       margin: 20px auto;
+    }
+    .coupon-header {
+       display: flex;
+       align-items: center;
+       margin-bottom: 20px;
+    }
+    .coupon-header img.icon {
+       width: 30px;
+       height: 30px;
+       margin-left: 10px;
+    }
+    .coupon-image {
+       width: 100%;
+       border-radius: 10px;
+       margin-bottom: 20px;
+    }
+    .coupon-details {
+       font-size: 16px;
+    }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    {% include 'core/header.html' %}
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="coupon-box">
+            <!-- Coupon Header -->
+            <div class="coupon-header">
+                <h2>{{ coupon.code }}</h2>
+                <img src="{% static 'images/Coupons/11.png' %}" alt="Coupon Icon" class="icon">
+            </div>
+
+            <!-- Coupon Main Image -->
+            <img src="{% static 'images/Coupons/1.png' %}" alt="Coupon Image" class="coupon-image">
+
+            <!-- Coupon Details -->
+            <div class="coupon-details">
+                <p><strong>Details:</strong> Unlock a special discount with our Welcome Coupon, designed exclusively for first-time shoppers at Swift Cart. This offer provides a generous saving on your initial purchase, making it the perfect opportunity to explore and enjoy our diverse product range. Start your shopping journey with us and take advantage of this fantastic offer tailored just for newcomers.</p>
+                <p><strong>Coupon Code:</strong> {{ coupon.code }}</p>
+                <p><strong>Discount:</strong> {{ coupon.discount }}%</p>
+                {% if coupon.purchase_price %}
+                <p><strong>Terms:</strong> {{ coupon.terms }}</p>
+                <p><strong>Purchase Price:</strong> ${{ coupon.purchase_price }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    {% include 'core/footer.html' %}
+
+    <!-- jQuery (Full Version) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

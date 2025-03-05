@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Swift Cart</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'core/header.html' %}
+
+    <div class="container mt-5">
+        <h2>Checkout</h2>
+
+        <form id="checkout-form" method="post" action="{% url 'process_checkout' %}">
+            {% csrf_token %}
+            <!-- Shipping Address -->
+            <div class="form-group">
+                <label for="shipping-address">Shipping Address</label>
+                <input type="text" id="shipping-address" name="shipping_address" class="form-control" placeholder="Enter your shipping address" required>
+            </div>
+
+            <!-- Coupon Code -->
+            <div class="form-group">
+                <label for="coupon">Coupon Code (optional)</label>
+                <select id="coupon" name="coupon" class="form-control">
+                    <option value="">Select a coupon</option>
+                    <option value="coupon1">Coupon 1 - $10, 10% off</option>
+                    <option value="coupon2">Coupon 2 - $15, 20% off</option>
+                    <option value="coupon3">Coupon 3 - $7, 15% off</option>
+                </select>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="text" id="phone-number" name="phone_number" class="form-control" placeholder="Enter your phone number" required>
+            </div>
+
+            <!-- Total Price -->
+            <div class="form-group">
+                <h4>Total Price: $<span id="total-price">{{ total_price }}</span></h4>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Proceed to Payment</button>
+        </form>
+    </div>
+
+    {% include 'core/footer.html' %}
+</body>
+</html>

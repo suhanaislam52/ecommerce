@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,7 +32,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [ 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,11 @@ INSTALLED_APPS = [
 
     # Custom Apps
     'core',
+    'services',
+    'userauths',
+    'djstripe'
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -121,9 +127,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
+# Directory where static files are collected
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'core', 'static')]
+# Directory where static files are collected after running collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'staticfiles')]
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 
@@ -132,3 +141,30 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS={
+    'site_header':"Swift Cart",
+    'site_brand':"You Order,We Deliver",
+    'site_logo':"static/front end templates/images/logo.png",
+    'copyright':"swiftcart.com",
+   
+}
+
+LOGIN_REDIRECT_URL = 'profile'  # Redirect to profile page after login
+LOGOUT_REDIRECT_URL = 'homepage'  # Redirect to homepage after logout
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+
+
+# DJ-Stripe settings
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
+DJSTRIPE_WEBHOOK_VALIDATION = 'retrieve_event'
+
+

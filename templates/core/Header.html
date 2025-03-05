@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Cart</title>
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Existing styles */
+        html, body { height: 100%; }
+        body { display: flex; flex-direction: column; }
+        .content { flex: 1; }
+        .navbar-nav { text-align: center; }
+        .navbar-nav .nav-item { display: inline-block; }
+        .navbar-nav .nav-link { padding-left: 15px; padding-right: 15px; }
+        .spacer { margin-top: 50px; }
+        .footer-social-icons a { display: block; margin-bottom: 5px; }
+        .card-container { position: relative; display: flex; overflow-x: auto; }
+        .card-deck { display: flex; flex-direction: row; }
+        .arrow-btn { position: absolute; right: 0; top: 50%; transform: translateY(-50%); background-color: rgba(255, 255, 255, 0.8); border: none; padding: 10px; cursor: pointer; }
+        #search-suggestions { position: absolute; z-index: 1000; background-color: white; width: 100%; border: 1px solid #ddd; max-height: 200px; overflow-y: auto; }
+        #search-suggestions a { color: black; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <!-- Left Side: Logo and Website Name -->
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/logo/logo.png' %}" alt="Swift Cart Logo" style="width: 40px; height: 40px;">
+                <span class="ml-2">Swift Cart</span>
+            </a>
+
+            <!-- Center: Search Bar -->
+               <!-- Your existing head content -->
+    {% load static %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function searchProducts(query) {
+            $.ajax({
+                url: "{% url 'product_search' %}",
+                data: { 'query': query },
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                success: function(response) {
+                    // Process and display the response data
+                    console.log(response.products);  // Example: Log the products to the console
+                    // Update the search results on the page
+                    var resultsContainer = $('#searchResults');
+                    resultsContainer.empty();
+                    response.products.forEach(function(product) {
+                        resultsContainer.append('<div>' + product.name + ' - $' + product.price + '</div>');
+                    });
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            $('#searchButton').on('click', function() {
+                var query = $('#searchInput').val();
+                searchProducts(query);
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Your existing body content -->
+    <form id="searchForm" class="form-inline mx-auto">
+        <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button id="searchButton" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+    </form>
+    <div id="searchResults"></div>
+
+            <!-- Right Side: Icons and Buttons -->
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <!-- User is logged in -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'wishlist' %}"><i class="fas fa-heart"></i> Wishlist</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                            <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    </li>
+                {% else %}
+                    <!-- User is not logged in -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-heart"></i> Wishlist</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                            <a class="dropdown-item" href="{% url 'login' %}">Sign In</a>
+                            <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Second Navbar: Categories and More -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div class="mx-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Deals' %}">Deals</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownCategory">
+                            <a class="dropdown-item" href="{% url 'food' %}">Food</a>
+                            <a class="dropdown-item" href="{% url 'makeup_page' %}">Makeup</a>
+                            <a class="dropdown-item" href="{% url 'perfumes' %}">Perfumes</a>
+                            <a class="dropdown-item" href="{% url 'shoes' %}">Shoes</a>
+                            <a class="dropdown-item" href="{% url 'cleaning' %}">Cleaning Accessories</a>
+                            <a class="dropdown-item" href="{% url 'clothing' %}">Clothing</a>
+                            <a class="dropdown-item" href="{% url 'games' %}">Games</a>
+                            <a class="dropdown-item" href="{% url 'furnitures' %}">Furnitures</a>
+                            <a class="dropdown-item" href="{% url 'Beverage' %}">Beverage Containers</a>
+                            <a class="dropdown-item" href="{% url 'category' %}">All Categories</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCoupons" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Coupons</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownCoupons">
+                            <a class="dropdown-item" href="{% url 'Coupon1' %}">Coupon 1</a>
+                            <a class="dropdown-item" href="{% url 'Coupon2' %}">Coupon 2</a>
+                            <a class="dropdown-item" href="{% url 'Coupon3' %}">Coupon 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'AboutUs' %}">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- jQuery, Bootstrap JS, and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for AJAX-based search suggestions -->
+    <script>
+        document.querySelector('input[name="query"]').addEventListener('input', function() {
+            let query = this.value;
+            if (query.length > 2) {  // Start suggesting after 3 characters
+                fetch(`{% url 'product_search' %}?query=${query}`, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                    .then(response => response.text())
+                    .then(html => {
+                        document.querySelector('#search-suggestions').innerHTML = html;
+                    });
+            } else {
+                document.querySelector('#search-suggestions').innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>

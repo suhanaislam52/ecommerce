@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup - Swift Cart</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .zoom-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .zoom-card:hover {
+            transform: scale(1.05); /* Slight zoom-in effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+        }
+
+        .card-img-top {
+            width: 100%; /* Ensures image takes full width of the card */
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures image covers the card area while maintaining aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    {% include 'core/header.html' %}
+
+    <!-- Main Content -->
+    
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Furnitures/9.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">White Single Sofa</h5>
+                        <p class="card-text">Elevate your living space with our sleek Single White Sofa. Designed for both style and comfort, this piece adds a touch of modern elegance to any room. ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Furnitures/4.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Bing Bang Chair</h5>
+                        <p class="card-text">Unwind in ultimate comfort with our Bean Bag Chair. Perfect for any cozy corner, this chair molds to your body, providing a relaxing spot for reading, gaming....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Furnitures/5.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">White Square Coffeetable</h5>
+                        <p class="card-text">Simplicity meets sophistication with our White Coffee Table. Featuring a clean, minimalist design, this table serves as the perfect centerpiece for your living room....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Furnitures/6.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Study Desk</h5>
+                        <p class="card-text">Get productive with our sleek, modern Desk, designed to enhance your workspace. With ample surface area and a minimalist aesthetic, this desk is perfect for tackling work ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9734;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Furnitures/3.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Living Room Sofa Set</h5>
+                        <p class="card-text">Transform your living room into a haven of comfort with our Living Room Sofa Set. combining plush cushions with a chic design that complements any decor. Perfect for movie nights,....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Furnitures/7.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Bed With White Sheets</h5>
+                        <p class="card-text"> Experience the epitome of hotel beds luxury with our  Bed dressed in crisp White Sheets. The perfect foundation for a restful night’s sleep , this bed combines comfort ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <button class="btn btn-primary mr-2">View Details</button>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include Footer -->
+    {% include 'core/footer.html' %}
+
+    <!-- jQuery (Full Version) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

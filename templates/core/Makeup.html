@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup - Swift Cart</title>
+    <!-- Load static files -->
+    {% load static %}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .zoom-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .zoom-card:hover {
+            transform: scale(1.05); /* Slight zoom-in effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+        }
+
+        .card-img-top {
+            width: 100%; /* Ensures image takes full width of the card */
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures image covers the card area while maintaining aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    {% include 'core/header.html' %}
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/2.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Red Matte Lipstick</h5>
+                        <p class="card-text">Elevate your look with our Red Matte Lipstick, featuring a vibrant and and long-lasting red hue. Its matte finish provides a sophisticated and bold look....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'matt' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Makeup/3.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Peptide Lip Treatments</h5>
+                        <p class="card-text">Revitalize your lips with our advanced Peptide Lip Treatments. Formulated with cutting-edge peptides, these treatments provide  ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'peptide' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/7.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Perfect Blend Concealer</h5>
+                        <p class="card-text">Achieve a flawless, radiant complexion with our premium Concealer. Designed to effectively cover imperfections, dark circles, and blemishes, this concealer delivers ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'concealer' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/8.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Glistening Glow Highlighter</h5>
+                        <p class="card-text">Illuminate your complexion with our Radiant Glow Highlighter. This luxurious highlighter delivers a stunning, pearlescent sheen that enhances your ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9734;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'highlighter' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/9.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Essential Eye Shadow Palette</h5>
+                        <p class="card-text">Unleash your creativity with our Essential Eye Shadow Palette, featuring a curated selection of versatile shades that suit any occasion. This palette....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9734;&#9734;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'shadow' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/13.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Lash Sensational Waterproof Mascara</h5>
+                        <p class="card-text"> Offers a fanned-out lash look with its curved brush that captures and coats every lash. The waterproof formula is perfect for....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'mascara' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/16.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Hydrating Cleanser</h5>
+                        <p class="card-text"> Ideal for dry and sensitive skin, this cleanser is formulated with ceramides and hyaluronic acid to help restore the skin's barrier and ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'cleanser' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/17.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Daily Moisturizing Body Lotion</h5>
+                        <p class="card-text"> Enriched with oatmeal, this lotion provides 24-hour moisture and helps to improve the skin's texture. It's gentle and suitable for daily use on all skin types.....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'lotion' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/19.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Shine Anti-Frizz Hair Serum</h5>
+                        <p class="card-text">This affordable serum contains argan oil and delivers intense shine and frizz control. It's designed to smooth and protect hair against  ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9734;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'serum' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 10 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'images/Makeup/5.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Beauty Body Collection</h5>
+                        <p class="card-text">Indulge in the ultimate self-care experience with our Beauty Body Collection. Each product is meticulously crafted to enhance and pamper your skin with luxurious textures and....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'Beauty' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!--Card 11-->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Makeup/21.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Liquid Lip Color</h5>
+                        <p class="card-text">Our Intense Lip Stain provides a natural, yet striking, lip color that lasts all day. Its innovative formula delivers a lightweight feel with intense pigmentation for a fresh, ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'Lipshade' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 12 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow zoom-card">
+                    <img src="{% static 'D:\NSU\PROJECTS\ecommerce\core\static\images\Makeup/20.png' %}" class="card-img-top" alt="Red Matte Lipstick">
+                    <div class="card-body text-center">
+                        <h5 class="card-title font-weight-bold">Micellar Makeup Remover</h5>
+                        <p class="card-text">Effortlessly dissolve and remove makeup with our Gentle Makeup Remover, designed to be effective yet kind to your skin. This formula is enriched with soothing ingredients that gently  ....</p>
+                        <div class="mb-3">
+                            <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> <!-- Golden Star Ratings -->
+                        </div>
+                        <a href="{% url 'remover' %}" class="btn btn-primary mr-2">View Details</a>
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat similar blocks for other cards -->
+        </div>
+    </div>
+    <!-- Include Footer -->
+    {% include 'core/footer.html' %}
+
+    <!-- jQuery (Full Version) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
